@@ -10,14 +10,15 @@ import {
   handleSendingFriendRequest,
   receiveFriendRequest,
   searchforfriends,
+  uploadimage,
   uploadPost,
   uploadProfilePicture,
 } from "../controller/userController.js";
 const router = Router();
 router.use(protectedRouterInServer);
-router.post("/uploadProfilePIcture", uploadProfilePicture);
+router.post("/uploadProfilePIcture", uploadimage, uploadProfilePicture);
 // body must contain title,image
-router.post("/createPost", uploadPost);
+router.post("/createPost", uploadimage, uploadPost);
 router.post("/sendfriendrequest", handleSendingFriendRequest);
 router.get("/recievefriendrequest", receiveFriendRequest);
 router.post("/answerfriendrequest", handleFriendRequest);

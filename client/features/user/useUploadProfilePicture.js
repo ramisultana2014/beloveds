@@ -8,7 +8,7 @@ export function useUploadProfilePicture() {
   const dispatch = useDispatch();
   const queryClient = useQueryClient();
   const { mutate: uploadProfilePicture, isPending } = useMutation({
-    mutationFn: (imageObj) => uploadProfilePictureApi(imageObj),
+    mutationFn: (formData) => uploadProfilePictureApi(formData),
     onSuccess: (data) => {
       //console.log(data);
       queryClient.setQueryData(["user"], data.data.updatedUser);

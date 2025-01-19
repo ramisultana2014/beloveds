@@ -11,9 +11,20 @@ import {
 import PostModel from "../models/PostModel.js";
 import FriendRequest from "../models/FriendRequest.js";
 import CommentModel from "../models/CommentModel.js";
+import multer from "multer";
+const upload = multer({
+  limits: { fileSize: 15000000 },
+  fileFilter(req, file, cb) {
+    if (!file.originalname.match(/\.(jpg|jpeg|png)$/i)) {
+      return cb(new Error("please upload a valid image"));
+    }
+    cb(undefined, true);
+  },
+});
+export const uploadimage = upload.single("image");
 export const uploadProfilePicture = async (req, res) => {
   //console.log(req.user);
-  const buffer = Buffer.from(req.body.image, "base64");
+  const buffer = req.file.buffer;
   const processedImage = await sharp(buffer)
     .rotate()
     .resize({ width: 250 })
@@ -54,10 +65,12 @@ export const uploadProfilePicture = async (req, res) => {
     data: { updatedUser },
   });
 };
+
 export const uploadPost = async (req, res) => {
   // body must contain userid,title,image
   // must be with protect route middleware
-  const buffer = Buffer.from(req.body.image, "base64");
+  //const buffer = Buffer.from(req.body.image, "base64");
+  const buffer = req.file.buffer;
   const processedImage = await sharp(buffer)
     .rotate()
     .resize({ width: 250 })

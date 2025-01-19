@@ -1,12 +1,11 @@
-export async function uploadProfilePicture(imageObj) {
+export async function uploadProfilePicture(formData) {
   // console.log(imageObj);
   // console.log("api");
   try {
     const res = await fetch(`/api/v1/user/uploadProfilePIcture`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
       credentials: "include",
-      body: JSON.stringify(imageObj),
+      body: FormData,
     });
 
     if (!res.ok) {
@@ -22,16 +21,15 @@ export async function uploadProfilePicture(imageObj) {
     throw new Error(err.message || "something went wrong");
   }
 }
-export async function createPost(postObj) {
+export async function createPost(formData) {
   // console.log(postObj);
   // console.log("api");
   //body must contain title,image
   try {
     const res = await fetch(`/api/v1/user/createPost`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
       credentials: "include",
-      body: JSON.stringify(postObj),
+      body: formData,
     });
 
     if (!res.ok) {

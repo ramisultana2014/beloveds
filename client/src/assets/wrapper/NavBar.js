@@ -166,12 +166,12 @@ const Wrapper = styled.header`
       width: 2rem;
     }
     .logoutbutton {
-      font-size: 1rem;
+      font-size: 2rem;
       padding: 1px;
     }
     a:link,
     a:visited {
-      font-size: 1rem;
+      font-size: 1.4rem;
     }
     .logout {
       width: 8rem;

@@ -13,41 +13,59 @@ function UploadPost() {
   const { register, formState, handleSubmit, reset } = useForm();
   const { errors } = formState;
 
-  async function onSubmit(data) {
-    //console.log("data", data);
+  // async function onSubmit(data) {
+  //   //console.log("data", data);
 
-    // Helper function to convert file to array buffer
-    //convertFileToArray(file): This helper function reads the file as an ArrayBuffer, converts it to a Uint8Array, and then converts that into a regular JavaScript array using Array.from.
-    const convertFileToArray = async (file) => {
-      try {
-        const arrayBuffer = await file.arrayBuffer();
-        //When you use Array.from(new Uint8Array(arrayBuffer)), it converts the binary data from the ArrayBuffer into a regular JavaScript array, where each element represents one byte of the file. This is necessary because JSON serialization (used when sending data to the server) cannot handle Uint8Array directly.
-        return Array.from(new Uint8Array(arrayBuffer));
-      } catch (err) {
-        throw new Error("File conversion failed");
-      }
-    };
+  //   // Helper function to convert file to array buffer
+  //   //convertFileToArray(file): This helper function reads the file as an ArrayBuffer, converts it to a Uint8Array, and then converts that into a regular JavaScript array using Array.from.
+  //   const convertFileToArray = async (file) => {
+  //     try {
+  //       const arrayBuffer = await file.arrayBuffer();
+  //       //When you use Array.from(new Uint8Array(arrayBuffer)), it converts the binary data from the ArrayBuffer into a regular JavaScript array, where each element represents one byte of the file. This is necessary because JSON serialization (used when sending data to the server) cannot handle Uint8Array directly.
+  //       return Array.from(new Uint8Array(arrayBuffer));
+  //     } catch (err) {
+  //       throw new Error("File conversion failed");
+  //     }
+  //   };
+  //   try {
+  //     const imageFile = data.picture[0];
+  //     //console.log(imageFile);
+  //     // Convert the files to buffers
+  //     const imageBuffer = await convertFileToArray(imageFile);
+  //     createPost(
+  //       {
+  //         image: imageBuffer,
+  //         title: data.title,
+  //       },
+  //       {
+  //         onSuccess: () => {
+  //           reset();
+  //           navigate("/personalpage");
+  //         },
+  //       }
+  //     );
+  //   } catch (err) {
+  //     console.error("Error uploading post:", err);
+  //   }
+  // }
+  async function onSubmit(data) {
     try {
       const imageFile = data.picture[0];
-      //console.log(imageFile);
-      // Convert the files to buffers
-      const imageBuffer = await convertFileToArray(imageFile);
-      createPost(
-        {
-          image: imageBuffer,
-          title: data.title,
+      const formData = new FormData();
+      formData.append("image", imageFile);
+      formData.append("title", data.title);
+
+      createPost(formData, {
+        onSuccess: () => {
+          reset();
+          navigate("/personalpage");
         },
-        {
-          onSuccess: () => {
-            reset();
-            navigate("/personalpage");
-          },
-        }
-      );
+      });
     } catch (err) {
       console.error("Error uploading post:", err);
     }
   }
+
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {

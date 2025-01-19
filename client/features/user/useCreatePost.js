@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 export function useCreatePost() {
   const queryClient = useQueryClient();
   const { mutate: createPost, isPending } = useMutation({
-    mutationFn: (postObj) => createPostApi(postObj),
+    mutationFn: (formData) => createPostApi(formData),
     onSuccess: (data) => {
       queryClient.invalidateQueries(["allUserPosts"]); // Invalidate specific query
       toast.success(`${data.msg}`);
