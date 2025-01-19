@@ -15,8 +15,9 @@ export const uploadProfilePicture = async (req, res) => {
   //console.log(req.user);
   const buffer = Buffer.from(req.body.image, "base64");
   const processedImage = await sharp(buffer)
-    .resize({ width: 250, height: 250 })
-    .png()
+    .rotate()
+    .resize({ width: 250 })
+    .jpeg()
     .toBuffer();
 
   //Upload the processed image to Cloudinary
