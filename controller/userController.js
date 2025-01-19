@@ -58,8 +58,8 @@ export const uploadPost = async (req, res) => {
   // must be with protect route middleware
   const buffer = Buffer.from(req.body.image, "base64");
   const processedImage = await sharp(buffer)
-    .rotate() // Automatically corrects the image orientation
-    .resize({ width: 250 }) // Adjust dimensions as needed
+    .rotate()
+    .resize({ width: 250 })
     .jpeg()
     .toBuffer();
 

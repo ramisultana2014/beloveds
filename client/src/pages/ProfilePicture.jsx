@@ -73,7 +73,7 @@ function ProfilePicture() {
               required: true,
               validate: {
                 size: (fileList) =>
-                  fileList[0]?.size <= 1500000 ||
+                  fileList[0]?.size <= 15000000 ||
                   "File size should be less than 1MB",
               },
             })}
