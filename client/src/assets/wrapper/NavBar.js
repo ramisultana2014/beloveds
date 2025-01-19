@@ -166,15 +166,15 @@ const Wrapper = styled.header`
       width: 2rem;
     }
     .logoutbutton {
-      font-size: 2rem;
+      font-size: 1rem;
       padding: 1px;
     }
     a:link,
     a:visited {
-      font-size: 1.4rem;
+      font-size: 1.2rem;
     }
     .logout {
-      width: 8rem;
+      width: 10rem;
     }
     .nav-account-info img {
       min-width: 3rem;

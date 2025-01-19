@@ -5,7 +5,7 @@ export async function uploadProfilePicture(formData) {
     const res = await fetch(`/api/v1/user/uploadProfilePIcture`, {
       method: "POST",
       credentials: "include",
-      body: FormData,
+      body: formData,
     });
 
     if (!res.ok) {

@@ -65,8 +65,8 @@ function NavBar({ toggleDarkTheme, isDarkTheme }) {
           )}
           <div className="logout">
             <Link to="personalpage"> Personal page</Link>
-            <Link to="profilepicturepage">Profile picture</Link>
             <Link to="uploadpostpage">Create post</Link>
+            <Link to="profilepicturepage">Profile picture</Link>
             <button className="logoutbutton" onClick={handleLogOut}>
               LOG Out !
             </button>

@@ -42,8 +42,9 @@ function ProfilePicture() {
   //   );
   // }
   async function onSubmit(data) {
+    //console.log(data);
     try {
-      const imageFile = data.picture[0];
+      const imageFile = data.profilePicture[0];
       const formData = new FormData();
       formData.append("image", imageFile);
 
@@ -101,7 +102,7 @@ function ProfilePicture() {
         )}
         <div className="btns">
           <button disabled={isPending} className="submit" type="submit">
-            {isPending ? "Uploading ..." : "Upload"}
+            {isPending ? "..." : "Upload"}
           </button>
           <button
             onClick={() => navigate("/homepage")}
