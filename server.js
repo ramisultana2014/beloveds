@@ -65,8 +65,8 @@ const limiter = rateLimit({
   message: "Too many request from this IP,please try again in an hour",
 });
 app.use("/api", limiter);
-app.use(express.json({ limit: "10mb" })); // let us use read date from body into the req  Object (req.body) ( parse data from body)
-app.use(express.urlencoded({ extended: true, limit: "10mb" }));
+app.use(express.json({ limit: "20mb" })); // let us use read date from body into the req  Object (req.body) ( parse data from body)
+app.use(express.urlencoded({ extended: true, limit: "20mb" }));
 //express.urlencoded() is middleware that parses incoming requests with application/x-www-form-urlencoded payloads, which are typically sent from HTML forms.
 app.use(mongoSanitize()); //it remove all the $
 //Data sanitization against xxs(cross site),Data sanitization against NoSQL query injection, mean attack with just knowing password and write "email":{"$gt":""},

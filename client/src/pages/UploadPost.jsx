@@ -93,8 +93,8 @@ function UploadPost() {
               required: true,
               validate: {
                 size: (fileList) =>
-                  fileList[0]?.size <= 5000000 ||
-                  "File size should be less than 5MB",
+                  fileList[0]?.size <= 20000000 ||
+                  "File size should be less than 10MB",
               },
             })}
             disabled={isPending}
