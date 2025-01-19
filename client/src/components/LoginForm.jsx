@@ -26,7 +26,6 @@ function LoginForm() {
           autoComplete="email"
           type="email"
           id="email"
-          defaultValue="rami@test.com"
           {...register("email", {
             required: "this field is required",
             pattern: {
@@ -44,7 +43,6 @@ function LoginForm() {
         </span>
         <input
           placeholder="password"
-          value="test1234"
           type={showpassword ? "text" : "password"}
           id="password"
           autoComplete="current-password"
