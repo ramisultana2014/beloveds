@@ -3,6 +3,7 @@ import { useCreatePost } from "../../features/user/useCreatePost";
 import Wrapper from "../assets/wrapper/UploadPost";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { resizeImage } from "../utli/imageUtils";
 function UploadPost() {
   const { createPost, isPending } = useCreatePost();
   const navigate = useNavigate();
@@ -16,8 +17,9 @@ function UploadPost() {
   async function onSubmit(data) {
     try {
       const imageFile = data.picture[0];
+      const resizedImage = await resizeImage(imageFile, 0.5 * 1024 * 1024); // Resize to 0.5 MB
       const formData = new FormData();
-      formData.append("image", imageFile);
+      formData.append("image", resizedImage);
       formData.append("title", data.title);
 
       createPost(formData, {
