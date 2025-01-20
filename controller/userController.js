@@ -28,7 +28,6 @@ export const uploadProfilePicture = async (req, res) => {
   const processedImage = await sharp(buffer)
     .rotate()
     .resize({ width: 250 })
-    .jpeg({ progressive: true, quality: 80 })
     .toBuffer();
 
   //Upload the processed image to Cloudinary
@@ -74,7 +73,6 @@ export const uploadPost = async (req, res) => {
   const processedImage = await sharp(buffer)
     .rotate()
     .resize({ width: 250 })
-    .jpeg({ progressive: true, quality: 80 })
     .toBuffer();
 
   // Upload the processed image to Cloudinary

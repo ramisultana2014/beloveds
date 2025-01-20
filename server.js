@@ -61,10 +61,16 @@ app.use(
 //limiter is middleware fun , allow 100 request per 1 hour
 const limiter = rateLimit({
   max: 100,
-  windowMs: 60 * 60 * 1000,
-  message: "Too many request from this IP,please try again in an hour",
+  windowMs: 60 * 1000,
+  handler: (req, res) => {
+    res.status(429).json({
+      status: 429,
+      error: "You have exceeded the rate limit. Please try again later.",
+    });
+  },
 });
 app.use("/api", limiter);
+
 app.use(express.json({ limit: "20mb" })); // let us use read date from body into the req  Object (req.body) ( parse data from body)
 app.use(express.urlencoded({ extended: true, limit: "20mb" }));
 //express.urlencoded() is middleware that parses incoming requests with application/x-www-form-urlencoded payloads, which are typically sent from HTML forms.
