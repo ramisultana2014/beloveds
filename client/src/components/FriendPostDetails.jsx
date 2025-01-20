@@ -28,7 +28,10 @@ function FriendPostDetails({ post }) {
   }
   return (
     <Wrapper>
-      <h3>{post.title}</h3>
+      <div className="ownerinfo">
+        <h2>{post.postOwnerName}</h2>
+        <h3>{post.title}</h3>
+      </div>
       <img loading="lazy" src={post.postImageUrl} alt={post.title} />
 
       <form onSubmit={handleComment}>

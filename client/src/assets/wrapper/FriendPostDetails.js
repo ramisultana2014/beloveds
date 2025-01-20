@@ -1,6 +1,5 @@
 import styled from "styled-components";
-const Wrapper = styled.section`
-  //border: 2px solid red;
+const Wrapper = styled.div`
   width: 90%;
   display: flex;
   flex-direction: column;
@@ -9,6 +8,13 @@ const Wrapper = styled.section`
   box-shadow: var(--shadow-lg);
   padding: 10px 2px;
   position: relative;
+  .ownerinfo {
+    width: 100%;
+    font-size: 1.2rem;
+    & h3 {
+      text-align: center;
+    }
+  }
   img {
     border-radius: 8px 8px 4px 4px;
   }
@@ -68,6 +74,9 @@ const Wrapper = styled.section`
       margin-left: 25%;
     }
     .commentdetails {
+      width: 40%;
+    }
+    .ownerinfo {
       width: 40%;
     }
   }

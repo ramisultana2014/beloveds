@@ -28,7 +28,7 @@ export const uploadProfilePicture = async (req, res) => {
   const processedImage = await sharp(buffer)
     .rotate()
     .resize({ width: 250 })
-    .jpeg()
+    .jpeg({ progressive: true, quality: 80 })
     .toBuffer();
 
   //Upload the processed image to Cloudinary
@@ -74,7 +74,7 @@ export const uploadPost = async (req, res) => {
   const processedImage = await sharp(buffer)
     .rotate()
     .resize({ width: 250 })
-    .jpeg()
+    .jpeg({ progressive: true, quality: 80 })
     .toBuffer();
 
   // Upload the processed image to Cloudinary
@@ -99,6 +99,7 @@ export const uploadPost = async (req, res) => {
   const postObj = {
     postOwnerID: req.user._id,
     title: req.body.title,
+    postOwnerName: req.user.name,
     postImageId: response.public_id,
     postImageUrl: response.secure_url,
   };
@@ -237,7 +238,7 @@ export const createComment = async (req, res) => {
 export const fetchHomePage = async (req, res) => {
   if (req.user.friendsList.length === 0)
     throw new NotFoundError("No posts to display start add friends");
-  console.log(req.user.friendsList);
+  //console.log(req.user.friendsList);
   // Fetch posts for all friends in a single query
   const homePagePosts = await PostModel.find({
     //here we search documents in PostModel collection  by field postOwnerId , to find document with field postOwnerId  that match any value   in req.user.friendList ,

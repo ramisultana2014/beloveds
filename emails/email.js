@@ -22,7 +22,7 @@ const sendEmail = async (options) => {
     },
   });
   //2 Define the email options
-  const html = pug.renderFile(`${__dirname}/welcomeEmail.pug`, {
+  const html = pug.renderFile(`${__dirname}/welcomeEmail1.pug`, {
     email: options.email,
     ticketvervicationCode: options.ticketvervicationCode,
   });
