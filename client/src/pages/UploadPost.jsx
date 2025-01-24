@@ -4,6 +4,7 @@ import Wrapper from "../assets/wrapper/UploadPost";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { resizeImage } from "../utli/imageUtils";
+import toast from "react-hot-toast";
 function UploadPost() {
   const { createPost, isPending } = useCreatePost();
   const navigate = useNavigate();
@@ -36,6 +37,7 @@ function UploadPost() {
       });
     } catch (err) {
       console.error("Error uploading post:", err);
+      toast.error(err);
     }
   }
   const handleFileChange = (e) => {
