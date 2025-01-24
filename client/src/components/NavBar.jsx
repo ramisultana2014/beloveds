@@ -49,8 +49,10 @@ function NavBar({ toggleDarkTheme, isDarkTheme }) {
             onChange={(e) => setSearch(e.target.value)}
             value={search}
           />
+          <button>
+            <LuSearch />
+          </button>
         </form>
-        <LuSearch />
       </div>
       <nav className="nav-account-info">
         <div className="show-logout">

@@ -22,6 +22,7 @@ const Wrapper = styled.section`
     gap: 5px;
     width: 23rem;
     margin-bottom: 2rem;
+    font-size: 1.2rem;
   }
   .infop {
     margin-left: -2rem;

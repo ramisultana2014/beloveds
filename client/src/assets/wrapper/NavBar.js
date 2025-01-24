@@ -23,12 +23,15 @@ const Wrapper = styled.header`
     position: relative;
     width: 50%;
   }
-  .search svg {
+  .search button {
+    border-radius: 0px 9px 9px 0px;
     position: absolute;
-    right: 5%;
-    top: 20%;
-    width: 2rem;
-    height: 2rem;
+    right: 0;
+    height: 100%;
+    width: 3rem;
+    //top: 15%;
+    /* width: 2rem;
+    height: 2rem; */
   }
   input {
     border-radius: 50px;

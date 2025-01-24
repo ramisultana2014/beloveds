@@ -24,6 +24,9 @@ function AppLayOut() {
     <Wrapper>
       <NavBar />
       <Outlet />
+      <footer>
+        <p>&copy; Copyright {new Date().getFullYear()} by Rami Sultana</p>
+      </footer>
     </Wrapper>
   );
 }

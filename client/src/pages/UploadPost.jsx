@@ -17,7 +17,13 @@ function UploadPost() {
   async function onSubmit(data) {
     try {
       const imageFile = data.picture[0];
-      const resizedImage = await resizeImage(imageFile, 0.5 * 1024 * 1024); // Resize to 0.5 MB
+      let resizedImage = imageFile;
+
+      // Only resize if the file size exceeds 0.5 MB
+      if (imageFile.size > 0.5 * 1024 * 1024) {
+        resizedImage = await resizeImage(imageFile, 0.5 * 1024 * 1024);
+      }
+
       const formData = new FormData();
       formData.append("image", resizedImage);
       formData.append("title", data.title);
@@ -32,7 +38,6 @@ function UploadPost() {
       console.error("Error uploading post:", err);
     }
   }
-
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
