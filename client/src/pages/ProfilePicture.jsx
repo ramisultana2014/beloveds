@@ -21,9 +21,9 @@ function ProfilePicture() {
     //console.log(data);
     try {
       const imageFile = data.profilePicture[0];
-      const resizedImage = await resizeImage(imageFile, 0.5 * 1024 * 1024); // Resize to 0.5 MB
+      //const resizedImage = await resizeImage(imageFile, 0.5 * 1024 * 1024); // Resize to 0.5 MB
       const formData = new FormData();
-      formData.append("image", resizedImage);
+      formData.append("image", imageFile);
 
       uploadProfilePicture(formData, {
         onSuccess: () => {

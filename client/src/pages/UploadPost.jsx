@@ -9,7 +9,7 @@ function UploadPost() {
   const { createPost, isPending } = useCreatePost();
   const navigate = useNavigate();
   const [fileName, setFileName] = useState("");
-  const [errorrr, seterorrr] = useState(null);
+
   const [imageDisplay, setImageDisplay] = useState(null);
 
   const { register, formState, handleSubmit, reset } = useForm();
@@ -18,15 +18,15 @@ function UploadPost() {
   async function onSubmit(data) {
     try {
       const imageFile = data.picture[0];
-      let resizedImage = imageFile;
+      // let resizedImage = imageFile;
 
-      // Only resize if the file size exceeds 0.5 MB
-      if (imageFile.size > 0.5 * 1024 * 1024) {
-        resizedImage = await resizeImage(imageFile, 0.5 * 1024 * 1024);
-      }
+      // // Only resize if the file size exceeds 0.5 MB
+      // if (imageFile.size > 0.5 * 1024 * 1024) {
+      //   resizedImage = await resizeImage(imageFile, 0.5 * 1024 * 1024);
+      // }
 
       const formData = new FormData();
-      formData.append("image", resizedImage);
+      formData.append("image", imageFile);
       formData.append("title", data.title);
 
       createPost(formData, {
@@ -37,7 +37,6 @@ function UploadPost() {
       });
     } catch (err) {
       console.error("Error uploading post:", err);
-      seterorrr(err);
     }
   }
   const handleFileChange = (e) => {
@@ -109,7 +108,6 @@ function UploadPost() {
           </button>
         </div>
       </form>
-      <p>{errorrr}</p>
     </Wrapper>
   );
 }
